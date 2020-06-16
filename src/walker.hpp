@@ -1,7 +1,7 @@
 #ifndef PWALK_WALK_HPP_
 #define PWALK_WALK_HPP_
 
-#include <eigen/Dense>
+#include <eigen3/Eigen/Dense>
 #include "common.hpp"
 
 namespace pwalk {

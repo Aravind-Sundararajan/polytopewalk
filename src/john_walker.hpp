@@ -2,7 +2,7 @@
 #define PWALK_JOHN_WALKER_HPP_
 
 #include <cmath>
-#include <eigen/Dense>
+#include <eigen3/Eigen/Dense>
 #include "util/math_functions.hpp"
 #include "walker.hpp"
 
@@ -37,4 +37,3 @@ private:
 } // namespace pwalk
 
 #endif // PWALK_JOHN_WALKER_HPP_
-
