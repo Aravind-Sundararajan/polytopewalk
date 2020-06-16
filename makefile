@@ -30,7 +30,7 @@ john_walker.o: john_walker.cpp john_walker.hpp
 	$(CXX)   ${CFLAGS}  -c john_walker.cpp -o john_walker.o
 
 driver: polytopedriver.cpp
-	$(CXX) ${CFLAGS} $(FASTOBJ) polytopedriver.cpp -o driver
+	$(CXX) ${CFLAGS} polytopedriver.cpp $(FASTOBJ) -o driver
 
 clean:
 	rm -f *.o driver
