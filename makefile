@@ -34,9 +34,10 @@ vaidya_walker.o: $(SRCDIR)vaidya_walker.cpp $(SRCDIR)vaidya_walker.hpp
 	$(CXX)   ${CFLAGS} $(INCLUDES) -c $(SRCDIR)vaidya_walker.cpp -o $(LIBDIR)vaidya_walker.o
 
 driver: $(SRCDIR)polytopedriver.cpp $(FASTOBJ)
-		$(CXX)   ${CFLAGS} $(INCLUDES) -c $(SRCDIR)polytopedriver.cpp -o $(LIBDIR)driver
+		$(CXX)   ${CFLAGS} $(INCLUDES) -c $(SRCDIR)polytopedriver.cpp -o $(BINDIR)driver
 
 clean:
 	cd $(LIBDIR) && rm -f *.o
+	cd $(BINDIR) && rm -f *.exe driver
 
 all: clean $(FASTOBJ) driver
