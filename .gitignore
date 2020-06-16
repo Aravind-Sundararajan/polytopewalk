@@ -30,6 +30,8 @@
 *.exe
 *.out
 *.app
-#ignore dirs
-bin/
-lib/
+driver
+
+#data
+*.csv
+
