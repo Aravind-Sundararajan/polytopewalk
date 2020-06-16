@@ -7,37 +7,32 @@ CXX := g++
 CFLAGS := -g -Wall
 #
 
-SRCDIR := ./src/
-
-LIBDIR := ./lib/
-
-BINDIR := ./bin/
-
-TSTDIR := ./test/
-
 CFLAGS := -g -O3 -Wall
 
-INCLUDES := -I$(LIBDIR) -I$(SRCDIR)
+FASTOBJ := math_functions.o public_interface.o ball_walker.o dikin_walker.o vaidya_walker.o john_walker.o
 
-FASTOBJ := public_interface.o ball_walker.o dikin_walker.o vaidya_walker.o
+public_interface.o: public_interface.cpp public_interface.hpp
+	$(CXX)   ${CFLAGS} -c public_interface.cpp -o public_interface.o
 
-public_interface.o: $(SRCDIR)public_interface.cpp $(SRCDIR)public_interface.hpp
-	$(CXX)   ${CFLAGS} $(INCLUDES) -c $(SRCDIR)public_interface.cpp -o $(LIBDIR)public_interface.o
+math_functions.o: math_functions.cpp math_functions.hpp
+	$(CXX)   ${CFLAGS} -c math_functions.cpp -o math_functions.o
 
-ball_walker.o: $(SRCDIR)ball_walker.cpp $(SRCDIR)ball_walker.hpp
-	$(CXX)   ${CFLAGS} $(INCLUDES) -c $(SRCDIR)ball_walker.cpp -o $(LIBDIR)ball_walker.o
+ball_walker.o: ball_walker.cpp ball_walker.hpp
+	$(CXX)   ${CFLAGS} -c ball_walker.cpp -o ball_walker.o
 
-dikin_walker.o: $(SRCDIR)dikin_walker.cpp $(SRCDIR)dikin_walker.hpp
-	$(CXX)   ${CFLAGS} $(INCLUDES) -c $(SRCDIR)dikin_walker.cpp -o $(LIBDIR)dikin_walker.o
+dikin_walker.o: dikin_walker.cpp dikin_walker.hpp
+	$(CXX)   ${CFLAGS}  -c dikin_walker.cpp -o dikin_walker.o
 
-vaidya_walker.o: $(SRCDIR)vaidya_walker.cpp $(SRCDIR)vaidya_walker.hpp
-	$(CXX)   ${CFLAGS} $(INCLUDES) -c $(SRCDIR)vaidya_walker.cpp -o $(LIBDIR)vaidya_walker.o
+vaidya_walker.o: vaidya_walker.cpp vaidya_walker.hpp
+	$(CXX)   ${CFLAGS}  -c vaidya_walker.cpp -o vaidya_walker.o
 
-driver: $(SRCDIR)polytopedriver.cpp $(FASTOBJ)
-		$(CXX)   ${CFLAGS} $(INCLUDES) -c $(SRCDIR)polytopedriver.cpp -o $(BINDIR)driver
+john_walker.o: john_walker.cpp john_walker.hpp
+	$(CXX)   ${CFLAGS}  -c john_walker.cpp -o john_walker.o
+
+driver: polytopedriver.cpp
+	$(CXX) ${CFLAGS} $(FASTOBJ) polytopedriver.cpp -o driver
 
 clean:
-	cd $(LIBDIR) && rm -f *.o
-	cd $(BINDIR) && rm -f *.exe driver
+	rm -f *.o driver
 
 all: clean $(FASTOBJ) driver
